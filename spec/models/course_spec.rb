@@ -11,5 +11,10 @@ RSpec.describe Course, type: :model do
       expect(course).not_to be_valid
       expect(course.errors[:name]).to include("can't be blank")
     end
+    it "has an invalid description" do
+      course.description = ''
+      expect(course).not_to be_valid
+      expect(course.errors[:description]).to include("can't be blank")
+    end
 end
 end

@@ -1,2 +1,5 @@
 class CoursesController < ApplicationController
-end
+    def index 
+        render Course.all, status: :ok
+    end
+endps
