@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#validations' do
+    let (:course) { build(:course)}
+    it "tests course object" do 
+      expect(course).to be_valid
+  end
+    it "has an invalid name" do
+      course.name = ''
+      expect(course).not_to be_valid
+      expect(course.errors[:name]).to include("can't be blank")
+    end
+end
 end
