@@ -11,20 +11,16 @@ RSpec.describe CoursesController do
         it 'returns a proper JSON' do
             course = create :course
             get '/courses'
-            body = JSON.parse(response.body)
-            expect(body).to eq(
-                data: [
-                    {
-                    id: course.id,
-                    type: 'course',
-                    attributes: {
-                        name: course.name,
-                        date: course.date, 
-                        description: course.description
-                    } 
-                }
-            ]
+            expect(json_data.length).to eq(1)
+            expected = json_data.first
+            expect(expected[:id]).to eq(course.id.to_s)
+            expect(expected[:type]).to eq('course')
+            expect(expected[:attributes]). to eq(
+                name: course.name,
+                date: '2021-03-12', 
+                description: course.description
             )
+            
     end
 end
 end
