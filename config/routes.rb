@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get '/courses', to: 'courses#index'
-  resources :courses, only: %i[:index show]
+  # get '/courses', to: 'courses#index'
+  resources :courses
 
   #get course by id
-  get '/courses/:id', to: 'courses#show'
+  # get '/courses/:id', to: 'courses#show'
 end
